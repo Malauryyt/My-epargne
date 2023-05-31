@@ -17,4 +17,11 @@ router.get("/liste/:id", body('id'), async(req,res) => {
 
 });
 
+router.get("/listeOperationMois/:id/:date_mois/:id_categorie/:date_annee", async(req,res) => {
+
+    const all = await operationRepository.getOperationByMois(req.params.id, req.params.date_mois, req.params.id_categorie, req.params.date_annee);
+    res.status(200).json({all});
+
+});
+
 exports.initializeRoutesOperation= () => router;

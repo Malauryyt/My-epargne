@@ -12,6 +12,7 @@ exports.getCategory = async (id) => {
 }
 
 
+
 exports.add_category = async (id_utilisateur,nom_cate, plafond_cate, couleur_cate, description_cate) =>{
 
 
@@ -57,11 +58,15 @@ exports.somme_category = async (id_categorie) =>{
 
 }
 
-exports.operation_category = async (id_categorie) =>{
+exports.operation_category = async (id_categorie, date_mois, date_annee) =>{
 
     const category = await sequelize.query(`SELECT operation.type_operation, operation.montant_operation, operation.tiers_opération, operation.paimentmoyen_operation,
                                                  operation.date_operation, operation.lieulien_operation, operation.description_operation
-                                                FROM categorie, operation  WHERE categorie.id_categorie = operation.id_categorie and categorie.id_categorie = ${id_categorie}`)
+                                                FROM categorie, operation  
+                                                WHERE categorie.id_categorie = operation.id_categorie 
+                                                and categorie.id_categorie = ${id_categorie}
+                                                and MONTH( date_operation ) = ${date_mois}
+                                                and YEAR( date_operation ) = ${date_annee}`)
         .then(([results, metadata]) => {
             return results;
         });

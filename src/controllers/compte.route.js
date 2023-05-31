@@ -4,7 +4,7 @@ const compteRepository = require('../model/compte-repository');
 const { body, validationResult } = require('express-validator');
 const  jwt= require("jsonwebtoken");
 
-router.post("/soldecompte",async(req,res) => {
+router.post("/soldecompte",body('id'),async(req,res) => {
 
 
     console.log("req.body.iddd: ", req.body.id)

@@ -41,9 +41,9 @@ router.post("/sommecate", body('id_categorie'), async (req,res)=>{
 
 });
 
-router.post("/operationcate", body('id_categorie'), async (req,res)=>{
+router.post("/operationcate", body('id_categorie'),  body('date_mois'), body('date_annee'),async (req,res)=>{
 
-    const operation = await cateRepository.operation_category(req.body.id_categorie)
+    const operation = await cateRepository.operation_category(req.body.id_categorie, req.body.date_mois, req.body.date_annee)
     console.log("operation: ", operation)
     res.status(200).json({operation});
 

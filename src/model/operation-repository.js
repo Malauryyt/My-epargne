@@ -24,3 +24,15 @@ exports.getOperation = async (id) => {
     console.log("ope", operation)
     return operation;
 }
+
+exports.getOperationByMois = async (id, date_mois, id_categorie, date_annee) =>{
+
+    const operation = await sequelize.query(`SELECT * , sum(montant_operation) as 'somme'   FROM operation, categorie WHERE operation.id_categorie= categorie.id_categorie 
+                                        and MONTH( date_operation ) = ${date_mois} and operation.id_utilisateur = ${id} and operation.id_categorie= ${id_categorie}  and YEAR( date_operation ) = ${date_annee}`)
+        .then(([results, metadata]) => {
+            return results;
+        });
+    console.log("Mes operation du mois", operation)
+    return operation;
+
+}

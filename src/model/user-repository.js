@@ -9,7 +9,7 @@ exports.createUsers = async (login, mdp, montant) => {
 
     const user = await this.loginUsers(login);
 
-   if( user === undefined){
+   if( user === undefined ){
        sequelize.query(`insert into utilisateur (login_utilisateur, mdp_utilisateur, solde_utilisateur) values ('${login}', '${mdphash}',${montant} )`)
            .then(([results, metadata]) => {
                console.log(results);
