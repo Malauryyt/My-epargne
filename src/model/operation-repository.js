@@ -8,7 +8,6 @@ exports.getOperationdujour = async (id) => {
             return results;
         });
 
-    console.log("ope", operation)
     return operation;
 }
 
@@ -21,7 +20,6 @@ exports.getOperation = async (id) => {
             return results;
         });
 
-    console.log("ope", operation)
     return operation;
 }
 
@@ -32,7 +30,7 @@ exports.getOperationByMois = async (id, date_mois, id_categorie, date_annee) =>{
         .then(([results, metadata]) => {
             return results;
         });
-    console.log("Mes operation du mois", operation)
+
     return operation;
 
 }
