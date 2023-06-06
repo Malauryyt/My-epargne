@@ -5,7 +5,7 @@ const userRoutesCompte = require('../controllers/compte.route');
 const userRoutesoperation = require('../controllers/operation.route');
 const userRoutesCategory = require('../controllers/cate.route');
 const userRoutesWishlist = require('../controllers/wishlist.route');
-
+const userRoutesRecap = require('../controllers/recap.route');
 
 class WebServer {
     app = undefined;
@@ -37,6 +37,7 @@ class WebServer {
        this.app.use('/operation', userRoutesoperation.initializeRoutesOperation());
        this.app.use('/category', userRoutesCategory.initializeRoutesCategory());
        this.app.use('/wishlist', userRoutesWishlist.initializeRoutesWishlist());
+       this.app.use('/recap', userRoutesRecap.initializeRoutesRecap());
     }
 }
 

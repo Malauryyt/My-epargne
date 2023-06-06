@@ -7,7 +7,6 @@ exports.getCategory = async (id) => {
         .then(([results, metadata]) => {
             return results;
         });
-    console.log("category", category)
     return category;
 }
 
